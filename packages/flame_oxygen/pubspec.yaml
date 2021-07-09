@@ -1,0 +1,21 @@
+name: flame_oxygen
+description: Integrate the Oxygen ECS with the Flame Engine.
+version: 0.0.1
+homepage: https://github.com/flame-engine/flame/tree/main/packages/flame_oxygen
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flame: 
+    path: ../flame
+  oxygen: ^0.2.0
+
+dev_dependencies:
+  dart_code_metrics: ^3.2.2
+  dartdoc: ^0.42.0
+  flutter_test:
+    sdk: flutter
+  test: ^1.9.4

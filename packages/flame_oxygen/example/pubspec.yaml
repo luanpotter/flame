@@ -1,0 +1,23 @@
+name: example
+description: Flame Oxygen example
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flame:
+    path: ../../flame
+  flame_oxygen:
+    path: ../
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/pizza.png
+    - assets/images/chopper.png
