@@ -17,8 +17,9 @@ class MyTextBox extends TextBoxComponent {
   MyTextBox(String text)
       : super(
           text,
-          textRenderer: _tiny,
+          textRenderer: _regular,
           boxConfig: TextBoxConfig(
+            maxWidth: 400,
             timePerChar: 0.05,
             growingBox: true,
             margins: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
@@ -28,7 +29,7 @@ class MyTextBox extends TextBoxComponent {
   @override
   void drawBackground(Canvas c) {
     final rect = Rect.fromLTWH(0, 0, width, height);
-    c.drawRect(rect, Paint()..color = const Color(0xFFFF00FF));
+    c.drawRect(rect, Paint()..color = Colors.amber);
     final margin = boxConfig.margins;
     final innerRect = Rect.fromLTWH(
       margin.left,

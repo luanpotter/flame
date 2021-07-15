@@ -9,6 +9,7 @@
  - Add `SpriteWidget.asset`
  - Add `SpriteButton.asset`
  - Add `NineTileBox.asset`
+ - Fix resolution of `TextBoxComponent`
  - Rename `Camera.cameraSpeed` to `Camera.speed`
 
 ## [1.0.0-releasecandidate.13]

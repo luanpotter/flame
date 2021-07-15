@@ -182,14 +182,23 @@ class TextBoxComponent<T extends TextRenderer> extends PositionComponent {
       return;
     }
     super.render(c);
+    final devicePixelRatio = window.devicePixelRatio;
+    c.save();
+    c.scale(1 / devicePixelRatio);
     c.drawImage(_cache!, Offset.zero, _imagePaint);
+    c.restore();
   }
 
   Future<Image> _redrawCache() {
+    final devicePixelRatio = window.devicePixelRatio;
     final recorder = PictureRecorder();
     final c = Canvas(recorder, size.toRect());
+    c.scale(devicePixelRatio);
     _fullRender(c);
-    return recorder.endRecording().toImage(width.toInt(), height.toInt());
+    return recorder.endRecording().toImage(
+          (width * devicePixelRatio).ceil(),
+          (height * devicePixelRatio).ceil(),
+        );
   }
 
   /// Override this method to provide a custom background to the text box.
