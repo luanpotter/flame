@@ -63,7 +63,7 @@ abstract class MyCollidable extends PositionComponent
   @override
   void render(Canvas canvas) {
     super.render(canvas);
-    renderShapes(canvas, paint: _activePaint);
+    renderHitboxes(canvas, paint: _activePaint);
     if (_isDragged) {
       final localCenter = (size / 2).toOffset();
       canvas.drawCircle(localCenter, 5, _activePaint);
@@ -134,7 +134,7 @@ class CollidablePolygon extends MyCollidable {
       Vector2(0, -1.0),
       Vector2(-0.8, -0.8),
     ]);
-    addShape(shape);
+    addHitbox(shape);
   }
 }
 
@@ -145,7 +145,7 @@ class CollidableRectangle extends MyCollidable {
     Vector2 velocity,
     ScreenCollidable screenCollidable,
   ) : super(position, size, velocity, screenCollidable) {
-    addShape(HitboxRectangle());
+    addHitbox(HitboxRectangle());
   }
 }
 
@@ -157,7 +157,7 @@ class CollidableCircle extends MyCollidable {
     ScreenCollidable screenCollidable,
   ) : super(position, size, velocity, screenCollidable) {
     final shape = HitboxCircle();
-    addShape(shape);
+    addHitbox(shape);
   }
 }
 
@@ -196,9 +196,9 @@ class CollidableSnowman extends MyCollidable {
     final top = SnowmanPart(0.4, Vector2(0, -0.8), Colors.red);
     final middle = SnowmanPart(0.6, Vector2(0, -0.3), Colors.yellow);
     final bottom = SnowmanPart(1.0, Vector2(0, 0.5), Colors.green);
-    addShape(top);
-    addShape(middle);
-    addShape(bottom);
+    addHitbox(top);
+    addHitbox(middle);
+    addHitbox(bottom);
   }
 }
 

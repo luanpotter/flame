@@ -38,7 +38,7 @@ class TestBlock extends PositionComponent with Hitbox, Collidable {
           position: position,
           size: size,
         ) {
-    addShape(hitbox);
+    addHitbox(hitbox);
   }
 
   bool hasCollisionWith(Collidable otherCollidable) {

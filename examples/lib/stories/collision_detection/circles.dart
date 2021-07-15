@@ -21,7 +21,7 @@ class MyCollidable extends PositionComponent
           size: Vector2.all(100),
           anchor: Anchor.center,
         ) {
-    addShape(HitboxCircle());
+    addHitbox(HitboxCircle());
   }
 
   @override
@@ -45,7 +45,7 @@ class MyCollidable extends PositionComponent
   @override
   void render(Canvas canvas) {
     super.render(canvas);
-    renderShapes(canvas);
+    renderHitboxes(canvas);
   }
 
   @override

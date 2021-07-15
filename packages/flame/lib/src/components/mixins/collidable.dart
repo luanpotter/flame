@@ -30,7 +30,7 @@ class ScreenCollidable extends PositionComponent
   Future<void> onLoad() async {
     await super.onLoad();
     size = gameRef.size;
-    addShape(HitboxRectangle());
+    addHitbox(HitboxRectangle());
   }
 
   final _zeroVector = Vector2.zero();

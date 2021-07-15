@@ -20,7 +20,7 @@ class TestBlock extends PositionComponent with Hitbox, Collidable {
           size: size,
         ) {
     collidableType = type;
-    addShape(
+    addHitbox(
       HitboxRectangle(),
     );
   }

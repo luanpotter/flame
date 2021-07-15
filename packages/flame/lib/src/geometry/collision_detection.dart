@@ -75,8 +75,8 @@ Set<Vector2> intersections(
   if (!collidableA.possiblyOverlapping(collidableB)) {
     // These collidables can't have any intersection points
     if (hasActiveCollision(collidableA, collidableB)) {
-      for (final shapeA in collidableA.shapes) {
-        for (final shapeB in collidableB.shapes) {
+      for (final shapeA in collidableA.hitboxes) {
+        for (final shapeB in collidableB.hitboxes) {
           _handleShapeCollisionEnd(shapeA, shapeB);
         }
       }
@@ -86,8 +86,8 @@ Set<Vector2> intersections(
 
   final result = <Vector2>{};
   final currentResult = <Vector2>{};
-  for (final shapeA in collidableA.shapes) {
-    for (final shapeB in collidableB.shapes) {
+  for (final shapeA in collidableA.hitboxes) {
+    for (final shapeB in collidableB.hitboxes) {
       currentResult.addAll(shapeA.intersections(shapeB));
       if (currentResult.isNotEmpty) {
         result.addAll(currentResult);

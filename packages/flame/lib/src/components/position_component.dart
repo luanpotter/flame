@@ -158,7 +158,7 @@ abstract class PositionComponent extends BaseComponent {
   @override
   void renderDebugMode(Canvas canvas) {
     if (this is Hitbox) {
-      (this as Hitbox).renderShapes(canvas);
+      (this as Hitbox).renderHitboxes(canvas);
     }
     canvas.drawRect(size.toRect(), debugPaint);
     debugTextPaint.render(

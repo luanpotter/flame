@@ -6,17 +6,19 @@ import '../../geometry/shape.dart';
 import '../position_component.dart';
 
 mixin Hitbox on PositionComponent {
-  final List<HitboxShape> _shapes = <HitboxShape>[];
+  final List<HitboxShape> _hitboxes = <HitboxShape>[];
 
-  UnmodifiableListView<HitboxShape> get shapes => UnmodifiableListView(_shapes);
-
-  void addShape(HitboxShape shape) {
-    shape.component = this;
-    _shapes.add(shape);
+  UnmodifiableListView<HitboxShape> get hitboxes {
+    return UnmodifiableListView(_hitboxes);
   }
 
-  void removeShape(HitboxShape shape) {
-    _shapes.remove(shape);
+  void addHitbox(HitboxShape shape) {
+    shape.component = this;
+    _hitboxes.add(shape);
+  }
+
+  void removeHitbox(HitboxShape shape) {
+    _hitboxes.remove(shape);
   }
 
   /// Checks whether the hitbox represented by the list of [HitboxShape]
@@ -24,11 +26,11 @@ mixin Hitbox on PositionComponent {
   @override
   bool containsPoint(Vector2 point) {
     return possiblyContainsPoint(point) &&
-        _shapes.any((shape) => shape.containsPoint(point));
+        _hitboxes.any((shape) => shape.containsPoint(point));
   }
 
-  void renderShapes(Canvas canvas, {Paint? paint}) {
-    _shapes.forEach((shape) => shape.render(canvas, paint ?? debugPaint));
+  void renderHitboxes(Canvas canvas, {Paint? paint}) {
+    _hitboxes.forEach((shape) => shape.render(canvas, paint ?? debugPaint));
   }
 
   /// Since this is a cheaper calculation than checking towards all shapes, this

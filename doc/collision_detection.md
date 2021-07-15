@@ -45,7 +45,7 @@ You can add new shapes to the `Hitbox` just like they are added in the below `Co
 The `Collidable` mixin is added to a `PositionComponent` that has a `HitBox` and it is used for
 detecting collisions with other `Collidable`s. If you do not add a shape to your `Hitbox` component
 it will never collide with anything. If you want the component to have a default rectangular shape
-that fills the size of your component you can simply do `addShape(HitboxRectangle())`.
+that fills the size of your component you can simply do `addHitbox(HitboxRectangle())`.
 
 To make your component collidable you would start off something like this:
 
@@ -59,7 +59,7 @@ class MyCollidable extends PositionComponent with Hitbox, Collidable {
       Vector2(0, -1),
       Vector2(-1, 0),
     ]);
-    addShape(shape);
+    addHitbox(shape);
   }
 }
 ```
@@ -165,11 +165,11 @@ There are currently three shapes: [Polygon](#Polygon), [Rectangle](#Rectangle) a
 [Cirlce](#Circle).
 
 ### HitboxShape
-A HitboxShape is a Shape defined from the center position of the component that it is attached to
-and it has the same bounding size and angle as the component. You can set `localPosition` to have
-the position of the shape deviate from the center of the component. A HitboxShape is the type of
-shape that you add to your Hitbox, or Collidable. Usually these types of shapes are the only ones
-that you need to use.
+A `HitboxShape` is a `Shape` defined from the center position of the component that it is attached
+to and it has the same bounding size and angle as the component. You can set `localPosition` to have
+the position of the shape deviate from the center of the component. A `HitboxShape` is the type of
+shape that you add to your `Hitbox`, or `Collidable`. Usually these types of shapes are the only
+ones that you need to use.
 
 #### HitboxPolygon
 It should be noted that if you want to use collision detection or `containsPoint` on the `Polygon`,

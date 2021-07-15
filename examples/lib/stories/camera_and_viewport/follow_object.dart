@@ -24,7 +24,7 @@ class MovableSquare extends SquareComponent
   late Timer timer;
 
   MovableSquare() : super(priority: 1) {
-    addShape(HitboxRectangle());
+    addHitbox(HitboxRectangle());
     timer = Timer(3.0)
       ..stop()
       ..callback = () {
@@ -89,7 +89,7 @@ class Rock extends SquareComponent with Hitbox, Collidable, Tappable {
     this.position.setFrom(position);
     size.setValues(50, 50);
     paint = unpressedPaint;
-    addShape(HitboxRectangle());
+    addHitbox(HitboxRectangle());
   }
 
   @override
