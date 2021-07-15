@@ -5,7 +5,6 @@ import '../../../extensions.dart';
 import '../../extensions/size.dart';
 import '../game.dart';
 import '../game_render_box.dart';
-
 import 'gestures.dart';
 
 typedef GameLoadingWidgetBuilder = Widget Function(
@@ -87,7 +86,7 @@ class GameWidget<T extends Game> extends StatefulWidget {
   ///   return GameWidget(
   ///     game: game,
   ///     overlayBuilderMap: {
-  ///       'PauseMenu': (ctx) {
+  ///       'PauseMenu': (ctx, game) {
   ///         return Text('A pause menu');
   ///       },
   ///     },

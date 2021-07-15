@@ -58,8 +58,8 @@ class Ball extends BodyComponent {
   @override
   void renderCircle(Canvas c, Offset center, double radius) {
     super.renderCircle(c, center, radius);
-    final lineRotation = Offset(0, radius);
-    c.drawLine(center, center + lineRotation, _blue);
+    //final lineRotation = Offset(0, radius);
+    //c.drawLine(center, center + lineRotation, _blue);
   }
 
   @override

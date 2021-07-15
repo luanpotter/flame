@@ -1,6 +1,7 @@
 import 'package:dashbook/dashbook.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:forge2d_samples/widget_sample.dart';
 
 import 'blob_sample.dart';
 import 'camera_sample.dart';
@@ -9,6 +10,7 @@ import 'composition_sample.dart';
 import 'contact_callbacks_sample.dart';
 import 'domino_sample.dart';
 import 'draggable_sample.dart';
+import 'joint_sample.dart';
 import 'mouse_joint_sample.dart';
 import 'position_body_sample.dart';
 import 'sprite_body_sample.dart';
@@ -69,6 +71,11 @@ void main() async {
       codeLink: link('draggable_sample.dart'),
     )
     ..add(
+      'Basic joint',
+      (DashbookContext ctx) => GameWidget(game: JointSample()),
+      codeLink: link('joint_sample.dart'),
+    )
+    ..add(
       'Mouse Joint',
       (DashbookContext ctx) => GameWidget(game: MouseJointSample()),
       codeLink: link('mouse_joint_sample.dart'),
@@ -77,6 +84,11 @@ void main() async {
       'Camera',
       (DashbookContext ctx) => GameWidget(game: CameraSample()),
       codeLink: link('camera_sample.dart'),
+    )
+    ..add(
+      'Widget overlay',
+      (DashbookContext ctx) => WidgetSample.gameWidget(),
+      codeLink: link('widget_sample.dart'),
     );
   runApp(dashbook);
 }
