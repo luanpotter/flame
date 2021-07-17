@@ -4,13 +4,13 @@ import 'package:meta/meta.dart';
 
 import '../extensions/vector2.dart';
 import '../sprite_animation.dart';
+import 'mixins/has_paint.dart';
 import 'position_component.dart';
 
 export '../sprite_animation.dart';
 
-class SpriteAnimationComponent extends PositionComponent {
+class SpriteAnimationComponent extends PositionComponent with HasPaint {
   SpriteAnimation? animation;
-  Paint? overridePaint;
   bool removeOnFinish = false;
 
   /// Creates a component with an empty animation which can be set later
@@ -19,9 +19,13 @@ class SpriteAnimationComponent extends PositionComponent {
     Vector2? size,
     int? priority,
     this.animation,
-    this.overridePaint,
+    Paint? paint,
     this.removeOnFinish = false,
-  }) : super(position: position, size: size, priority: priority);
+  }) : super(position: position, size: size, priority: priority) {
+    if (paint != null) {
+      this.paint = paint;
+    }
+  }
 
   /// Creates a SpriteAnimationComponent from a [size], an [image] and [data]. Check [SpriteAnimationData] for more info on the available options.
   ///
@@ -32,9 +36,14 @@ class SpriteAnimationComponent extends PositionComponent {
     Vector2? position,
     Vector2? size,
     int? priority,
+    Paint? paint,
     this.removeOnFinish = false,
   }) : super(position: position, size: size, priority: priority) {
     animation = SpriteAnimation.fromFrameData(image, data);
+
+    if (paint != null) {
+      this.paint = paint;
+    }
   }
 
   /// Component will be removed after animation is done and [removeOnFinish] is set.
@@ -51,7 +60,7 @@ class SpriteAnimationComponent extends PositionComponent {
     animation?.getSprite().render(
           canvas,
           size: size,
-          overridePaint: overridePaint,
+          overridePaint: paint,
         );
   }
 

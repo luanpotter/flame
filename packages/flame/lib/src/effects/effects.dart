@@ -4,7 +4,9 @@ import '../components/base_component.dart';
 import '../components/position_component.dart';
 import '../extensions/vector2.dart';
 
+export './color_effect.dart';
 export './move_effect.dart';
+export './opacity_effect.dart';
 export './rotate_effect.dart';
 export './scale_effect.dart';
 export './sequence_effect.dart';

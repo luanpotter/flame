@@ -4,15 +4,14 @@ import 'package:meta/meta.dart';
 
 import '../extensions/vector2.dart';
 import '../sprite_animation.dart';
+import 'mixins/has_paint.dart';
 import 'position_component.dart';
 
 export '../sprite_animation.dart';
 
-class SpriteAnimationGroupComponent<T> extends PositionComponent {
+class SpriteAnimationGroupComponent<T> extends PositionComponent with HasPaint {
   /// Key with the current playing animation
   T? current;
-
-  Paint? overridePaint;
 
   /// Map with the mapping each state to the flag removeOnFinish
   final Map<T, bool> removeOnFinish;
@@ -27,13 +26,17 @@ class SpriteAnimationGroupComponent<T> extends PositionComponent {
     Vector2? size,
     int? priority,
     this.current,
-    this.overridePaint,
+    Paint? paint,
     this.removeOnFinish = const {},
   }) : super(
           position: position,
           size: size,
           priority: priority,
-        );
+        ) {
+    if (paint != null) {
+      this.paint = paint;
+    }
+  }
 
   /// Creates a SpriteAnimationGroupComponent from a [size], an [image] and [data].
   /// Check [SpriteAnimationData] for more info on the available options.
@@ -47,7 +50,7 @@ class SpriteAnimationGroupComponent<T> extends PositionComponent {
     Vector2? position,
     Vector2? size,
     int? priority,
-    this.overridePaint,
+    Paint? paint,
     this.removeOnFinish = const {},
   }) : super(
           position: position,
@@ -63,6 +66,10 @@ class SpriteAnimationGroupComponent<T> extends PositionComponent {
         ),
       );
     });
+
+    if (paint != null) {
+      this.paint = paint;
+    }
   }
 
   SpriteAnimation? get animation => animations[current];
@@ -86,7 +93,7 @@ class SpriteAnimationGroupComponent<T> extends PositionComponent {
     animation?.getSprite().render(
           canvas,
           size: size,
-          overridePaint: overridePaint,
+          overridePaint: paint,
         );
   }
 

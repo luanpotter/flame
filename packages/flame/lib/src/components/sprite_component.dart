@@ -6,6 +6,7 @@ import '../extensions/image.dart';
 import '../extensions/vector2.dart';
 import '../sprite.dart';
 import 'component.dart';
+import 'mixins/has_paint.dart';
 import 'position_component.dart';
 
 export '../sprite.dart';
@@ -15,14 +16,9 @@ export '../sprite.dart';
 /// angle.
 ///
 /// This a commonly used subclass of [Component].
-class SpriteComponent extends PositionComponent {
+class SpriteComponent extends PositionComponent with HasPaint {
   /// The [sprite] to be rendered by this component.
   Sprite? sprite;
-
-  /// Use this to override the colour used (to apply tint or opacity).
-  ///
-  /// If not provided the default is full white (no tint).
-  Paint? overridePaint;
 
   /// Creates a component with an empty sprite which can be set later
   SpriteComponent({
@@ -30,8 +26,12 @@ class SpriteComponent extends PositionComponent {
     Vector2? size,
     int? priority,
     this.sprite,
-    this.overridePaint,
-  }) : super(position: position, size: size, priority: priority);
+    Paint? paint,
+  }) : super(position: position, size: size, priority: priority) {
+    if (paint != null) {
+      this.paint = paint;
+    }
+  }
 
   factory SpriteComponent.fromImage(
     Image image, {
@@ -57,7 +57,7 @@ class SpriteComponent extends PositionComponent {
     sprite?.render(
       canvas,
       size: size,
-      overridePaint: overridePaint,
+      overridePaint: paint,
     );
   }
 }
